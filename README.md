@@ -1,1 +1,1 @@
-# Honeypot SOC Threat Report
+# Honeypot SOC Lab Project
