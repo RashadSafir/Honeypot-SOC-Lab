@@ -16,11 +16,13 @@ if something were to go wrong with the honeypot.
 
 ## Rules I've removed
 
-| Name | Direction | Port | Source | Purpose |
-|---|---|---|---|---|
-| TEMP-ssh-from-home | Inbound | 22 | My home IP only | I used this once to get into the VM and then
-install Tailscale. Then I moved the real SSH onto the Tailscale interface. From there, I deleted it
-since I didn't need it anymore. |
+| Name | Direction | Port | Source |
+|---|---|---|---|
+| TEMP-ssh-from-home | Inbound | 22 | My home IP only | 
+
+I used this once to get into the VM and then install Tailscale. 
+Then I moved the real SSH onto the Tailscale interface. From there,
+I deleted it since I didn't need it anymore.
 
 ## Azure's default rules
 
