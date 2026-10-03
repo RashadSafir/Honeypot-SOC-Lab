@@ -1,0 +1,6 @@
+*.key
+*.pem
+.env
+*.log
+cowrie.json*
+dl/
