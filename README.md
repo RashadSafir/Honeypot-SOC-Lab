@@ -11,7 +11,6 @@ and Telnet traffic (the first scanner showed up within about five minutes).
 Logs stay on the VM for now; shipping them to Wazuh on the Pi is next.
 
 ## Progress
-## Progress
 
 - [x] Planning, Azure budget alerts, Pi 5 setup
 - [x] Azure network/VM, admin access over Tailscale only
