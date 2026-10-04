@@ -19,7 +19,8 @@ placeholders)
 
 ![Real VM vs. Cowrie session](images/sandbox-fake-vs-real.png)
 
-**Left**: This represents the real VM, running Ubuntu 24.04 on an Azure kernel
+**Left**: This represents the real VM, running Ubuntu 24.04 on an Azure kernel.
+
 **Right**: This represents an SSH session into Cowrie on the same machine. The attacker would see
 a fake Debian 12 host with its own hostname and kernel string (not the real system ofc). This 
 confirms Cowrie is running in emulated-shell mode with no access to the real OS. 
