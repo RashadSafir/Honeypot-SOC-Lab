@@ -2,7 +2,7 @@
 
 This is the network security group attached to the honeypot VM's network
 interface. Azure checks rules from lowest priority number
-to highest, so my custom rules sit at 100 and run before Azure's defaults.
+to highest, so my custom rules (100–120) run before Azure's defaults.
 
 ## Custom rules
 
