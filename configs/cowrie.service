@@ -1,0 +1,18 @@
+# Runs Cowrie under systemd as the unprivileged cowrie user.
+[Unit]
+Description=Cowrie SSH/Telnet honeypot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=cowrie
+Group=cowrie
+WorkingDirectory=/home/cowrie/my-honeypot
+ExecStartPre=/bin/rm -f /home/cowrie/my-honeypot/var/run/cowrie.pid
+# Cowrie 3.x CLI has no foreground mode, so call twistd directly with --nodaemon
+ExecStart=/home/cowrie/my-honeypot/cowrie-env/bin/twistd --umask=0022 --nodaemon --pidfile= --logger cowrie.python.logfile.logger cowrie
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

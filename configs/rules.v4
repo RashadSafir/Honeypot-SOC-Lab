@@ -1,0 +1,11 @@
+# NAT-only boot rules for netfilter-persistent.
+# Deliberately excludes Tailscale's own firewall rules, which Tailscale recreates at startup.
+*nat
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+# Public SSH/Telnet -> Cowrie; scoped to eth0 so Tailscale traffic is untouched
+-A PREROUTING -i eth0 -p tcp --dport 22 -j REDIRECT --to-port 2222
+-A PREROUTING -i eth0 -p tcp --dport 23 -j REDIRECT --to-port 2223
+COMMIT
