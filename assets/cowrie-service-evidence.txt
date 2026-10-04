@@ -1,0 +1,29 @@
+=== Sun Oct  4 02:10:34 UTC 2026 — Phase 2, before iptables redirect ===
+State  Recv-Q Send-Q               Local Address:Port  Peer Address:Port Process                                   
+LISTEN 0      4096               127.0.0.54:53              0.0.0.0:*    users:(("systemd-resolve",pid=478,fd=17))
+LISTEN 0      4096               127.0.0.53%lo:53           0.0.0.0:*    users:(("systemd-resolve",pid=478,fd=15))
+LISTEN 0      4096               [VM-TAILSCALE-IP]:62512    0.0.0.0:*    users:(("tailscaled",pid=695,fd=23))     
+LISTEN 0      50                 0.0.0.0:2223               0.0.0.0:*    users:(("twistd",pid=4202,fd=10))        
+LISTEN 0      50                 0.0.0.0:2222               0.0.0.0:*    users:(("twistd",pid=4202,fd=9))         
+LISTEN 0      128                [VM-TAILSCALE-IP]:22222    0.0.0.0:*    users:(("sshd",pid=749,fd=3))            
+LISTEN 0      4096               [VM-TAILSCALE-IPV6]:52400  [::]:*       users:(("tailscaled",pid=695,fd=24))     
+● cowrie.service - Cowrie SSH/Telnet honeypot
+     Loaded: loaded (/etc/systemd/system/cowrie.service; enabled; preset: enabled)
+     Active: active (running) since Sun 2026-10-04 02:08:25 UTC; 2min 9s ago
+    Process: 4200 ExecStartPre=/bin/rm -f /home/cowrie/my-honeypot/var/run/cowrie.pid (code=exited, status=0/SUCCESS)
+   Main PID: 4202 (twistd)
+      Tasks: 1 (limit: 472)
+     Memory: 51.5M (peak: 52.6M)
+        CPU: 437ms
+     CGroup: /system.slice/cowrie.service
+             └─4202 /home/cowrie/my-honeypot/cowrie-env/bin/python /home/cowrie/my-honeypot/cowrie-env/bin/twistd --umask=0022 --nodaemon --pidfile= --logger cowrie.python.logfile.logger cowrie
+
+Oct 04 02:08:25 vm-honeypot systemd[1]: Starting cowrie.service - Cowrie SSH/Telnet honeypot...
+Oct 04 02:08:25 vm-honeypot systemd[1]: Started cowrie.service - Cowrie SSH/Telnet honeypot.
+    PID USER     CMD
+   4202 cowrie   /home/cowrie/my-honeypot/cowrie-env/bin/python /home/cowrie/my-honeypot/cowrie-env/bin/twistd --umask=0022 --nodaemon --pidfile= --logger cowrie.python.logfile.logger cowrie
+=== Sun Oct  4 02:17:33 UTC 2026 — after iptables redirect ===
+Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 REDIRECT   6    --  eth0   *       0.0.0.0/0            0.0.0.0/0            tcp dpt:22 redir ports 2222
+    0     0 REDIRECT   6    --  eth0   *       0.0.0.0/0            0.0.0.0/0            tcp dpt:23 redir ports 2223

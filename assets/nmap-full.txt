@@ -1,0 +1,9 @@
+# Nmap 7.94SVN scan initiated Sat Oct  3 22:28:10 2026 as: nmap -Pn -sS -p- -T4 --min-rate 1000 -oN nmap-full.txt [HONEYPOT-PUBLIC-IP]
+Nmap scan report for [HONEYPOT-PUBLIC-IP]
+Host is up (0.065s latency).
+Not shown: 65533 filtered tcp ports (no-response)
+PORT   STATE SERVICE
+22/tcp open  ssh
+23/tcp open  telnet
+
+# Nmap done at Sat Oct  3 22:30:04 2026 -- 1 IP address (1 host up) scanned in 114.10 seconds

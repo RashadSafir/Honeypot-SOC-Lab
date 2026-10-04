@@ -1,0 +1,12 @@
+# Nmap 7.94SVN scan initiated Sat Oct  3 22:27:12 2026 as: nmap -Pn -sS -p 22,23,2222,2223,22222 -oN nmap-targeted.txt [HONEYPOT-PUBLIC-IP]
+Nmap scan report for [HONEYPOT-PUBLIC-IP]
+Host is up (0.067s latency).
+
+PORT      STATE    SERVICE
+22/tcp    open     ssh
+23/tcp    open     telnet
+2222/tcp  filtered EtherNetIP-1
+2223/tcp  filtered rockwell-csp2
+22222/tcp filtered easyengine
+
+# Nmap done at Sat Oct  3 22:27:14 2026 -- 1 IP address (1 host up) scanned in 1.95 seconds
