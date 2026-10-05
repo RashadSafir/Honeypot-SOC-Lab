@@ -1,0 +1,5 @@
+Mon Oct  5 20:06:45 UTC 2026
+$ nc -zv -w3 [PI-TAILSCALE-IP] 1514
+Connection to [PI-TAILSCALE-IP] 1514 port [tcp/*] succeeded!
+$ nc -zv -w3 [PI-TAILSCALE-IP] 22
+nc: connect to [PI-TAILSCALE-IP] port 22 (tcp) timed out: Operation now in progress

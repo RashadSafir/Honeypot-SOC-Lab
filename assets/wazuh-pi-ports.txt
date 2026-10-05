@@ -1,0 +1,21 @@
+Mon Oct  5 20:07:17 UTC 2026
+$ sudo ss -tlnp (Wazuh ports)
+LISTEN 0      128                        0.0.0.0:1514       0.0.0.0:*    users:(("wazuh-remoted",pid=118412,fd=4))             
+LISTEN 0      128                        0.0.0.0:1515       0.0.0.0:*    users:(("wazuh-authd",pid=118276,fd=6))               
+LISTEN 0      2048                       0.0.0.0:55000      0.0.0.0:*    users:(("python3",pid=118233,fd=46))                  
+LISTEN 0      511                        0.0.0.0:443        0.0.0.0:*    users:(("node",pid=119572,fd=19))                     
+LISTEN 0      4096            [::ffff:127.0.0.1]:9200             *:*    users:(("java",pid=65213,fd=622))                     
+LISTEN 0      2048                          [::]:55000         [::]:*    users:(("python3",pid=118233,fd=47))                  
+
+$ sudo ufw status verbose
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+Anywhere on tailscale0     ALLOW IN    Anywhere                  
+22/tcp                     ALLOW IN    [HOME-LAN-SUBNET]            
+Anywhere (v6) on tailscale0 ALLOW IN    Anywhere (v6)             
+
