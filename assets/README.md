@@ -11,6 +11,7 @@ placeholders)
 | `cowrie-service-evidence.txt` | Before the iptables redirect: Cowrie running under systemd as the unprivileged `cowrie` user, listening on 2222/2223; real sshd bound only to the Tailscale IP on 22222. After: NAT rules redirecting public 22/23 to Cowrie, scoped to `eth0`. |
 | `nmap-targeted.txt` | External scan of the public IP: 22 and 23 open; Cowrie's real ports (2222/2223) and admin SSH (22222) filtered by the NSG. |
 | `nmap-full.txt` | Full 65,535-port external scan: only 22 and 23 reachable. |
+| `tailscale-acl-tests.txt` | From the VM over Tailscale: Pi SSH and my laptop time out (blocked); Pi port 1514 is refused (allowed through, nothing listening yet). |
 
 
 ## Screenshots

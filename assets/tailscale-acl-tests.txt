@@ -1,0 +1,7 @@
+# Tailscale ACL tests from the honeypot VM — Mon Oct  5 02:21:28 UTC 2026
+$ nc -zv -w3 [PI-TAILSCALE-IP] 22
+nc: connect to [PI-TAILSCALE-IP] port 22 (tcp) timed out: Operation now in progress
+$ nc -zv -w3 [PI-TAILSCALE-IP] 1514
+nc: connect to [PI-TAILSCALE-IP] port 1514 (tcp) failed: Connection refused
+$ nc -zv -w3 [LAPTOP-TAILSCALE-IP] 22
+nc: connect to [LAPTOP-TAILSCALE-IP] port 22 (tcp) timed out: Operation now in progress
