@@ -9,7 +9,7 @@ allow-all rule with tags and specific grants.
 | Tag | Device |
 |---|---|
 | `tag:honeypot` | Azure VM (Cowrie) |
-| `tag:soc` | Raspberry Pi (Wazuh, will be implemented soon) |
+| `tag:soc` | Raspberry Pi (Wazuh) |
 
 My laptop stays untagged, owned by my user
 
@@ -18,7 +18,7 @@ My laptop stays untagged, owned by my user
 | From | To | Ports | Why |
 |---|---|---|---|
 | My devices | each other | all | normal use |
-| My devices | Pi | all | SSH now, Wazuh dashboard later |
+| My devices | Pi | all | SSH now & Wazuh dashboard |
 | My devices | VM | 22222 | admin SSH |
 | VM | Pi | 1514, 1515 | Wazuh agent → manager |
 
@@ -30,6 +30,8 @@ save, and Tailscale rejects any change that breaks them.
 
 ## Verified
 
-From the VM, the Pi's SSH and my laptop time out (blocked), while
-the Pi's port 1514 is refused (allowed through, nothing listening
-yet). See [`assets/`](../../assets/tailscale-acl-tests.txt).
+From the VM, the Pi's SSH and my laptop time out (blocked). Before Wazuh
+was installed, the Pi's port 1514 was refused (allowed through, nothing
+listening); after the install it succeeds. See
+[`tailscale-acl-tests.txt`](../../assets/tailscale-acl-tests.txt) (before)
+and [`wazuh-port-tests.txt`](../../assets/wazuh-port-tests.txt) (after).
