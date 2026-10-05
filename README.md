@@ -15,7 +15,7 @@ Logs stay on the VM for now; shipping them to Wazuh on the Pi is next.
 - [x] Planning, Azure budget alerts, Pi 5 setup
 - [x] Azure network/VM, admin access over Tailscale only
 - [x] Cowrie deployed, exposed on 22/23, verified with external scans
-- [ ] Ship logs to the Pi over Tailscale
+- [ ] Ship logs to the Pi over Tailscale (tailnet is segmented, need to install Wazuh next)
 - [ ] Wazuh SIEM and custom Cowrie decoders
 - [ ] IP enrichment (AbuseIPDB / VirusTotal)
 - [ ] Map detection rules to frameworks (like MITRE ATT&CK)
