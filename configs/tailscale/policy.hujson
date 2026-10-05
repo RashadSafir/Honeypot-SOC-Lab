@@ -1,0 +1,43 @@
+{
+	// Tags that can be applied to devices, and who can apply them.
+	"tagOwners": {
+		"tag:honeypot": ["autogroup:admin"],
+		"tag:soc":      ["autogroup:admin"],
+	},
+
+	// Who can reach what. Anything not listed here is denied.
+	"grants": [
+		// My own (untagged) devices can reach each other
+		{"src": ["autogroup:member"], "dst": ["autogroup:self"], "ip": ["*"]},
+		// Me -> Pi: SSH now, Wazuh dashboard later
+		{"src": ["autogroup:member"], "dst": ["tag:soc"], "ip": ["*"]},
+		// Me -> honeypot: admin SSH only
+		{"src": ["autogroup:member"], "dst": ["tag:honeypot"], "ip": ["tcp:22222"]},
+		// Honeypot -> Pi: Wazuh agent ports only
+		{"src": ["tag:honeypot"], "dst": ["tag:soc"], "ip": ["tcp:1514", "tcp:1515"]},
+	],
+
+	// Tailscale SSH (unused; real sshd on 22222 is covered by the grants above).
+	"ssh": [
+		{
+			"action": "check",
+			"src":    ["autogroup:member"],
+			"dst":    ["autogroup:self"],
+			"users":  ["autogroup:nonroot", "root"],
+		},
+	],
+
+	// Checked on every save; the save is rejected if any test fails.
+	"tests": [
+		{
+			"src":    "tag:honeypot",
+			"accept": ["tag:soc:1514", "tag:soc:1515"],
+			"deny":   ["tag:soc:22", "tag:soc:443", "<laptop-tailscale-ip>:22"],
+		},
+		{
+			"src":    "<tailscale-login-email>",
+			"accept": ["tag:honeypot:22222", "tag:soc:22"],
+			"deny":   ["tag:honeypot:22"],
+		},
+	],
+}
