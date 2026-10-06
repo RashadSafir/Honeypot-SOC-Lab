@@ -1,0 +1,6 @@
+  <!-- Added inside <ossec_config> in /var/ossec/etc/ossec.conf on the VM. -->
+  <!-- Ships Cowrie's JSON log to the Wazuh manager; Wazuh's built-in JSON decoder splits the fields. -->
+  <localfile>
+    <log_format>json</log_format>
+    <location>/home/cowrie/my-honeypot/var/log/cowrie/cowrie.json</location>
+  </localfile>
