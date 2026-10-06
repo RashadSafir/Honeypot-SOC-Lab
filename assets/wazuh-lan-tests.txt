@@ -1,0 +1,11 @@
+Tue Oct  6 14:02:23 UTC 2026
+$ nc -zv -w3 [PI-LAN-IP] 22
+Connection to [PI-LAN-IP] 22 port [tcp/ssh] succeeded!
+$ nc -zv -w3 [PI-LAN-IP] 443
+nc: connect to [PI-LAN-IP] port 443 (tcp) timed out: Operation now in progress
+$ nc -zv -w3 [PI-LAN-IP] 1514
+nc: connect to [PI-LAN-IP] port 1514 (tcp) timed out: Operation now in progress
+$ nc -zv -w3 [PI-LAN-IP] 1515
+nc: connect to [PI-LAN-IP] port 1515 (tcp) timed out: Operation now in progress
+$ nc -zv -w3 [PI-LAN-IP] 55000
+nc: connect to [PI-LAN-IP] port 55000 (tcp) timed out: Operation now in progress
