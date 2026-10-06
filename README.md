@@ -6,8 +6,7 @@ SIEM on a Raspberry Pi, and write threat reports on what attackers have done.
 
 ## Current Status
 
-Cowrie is live on the Azure VM. Wazuh is installed on the Pi and locked to
-Tailscale; next is the agent on the VM to ship Cowrie logs.
+Cowrie logs now ship from the VM to Wazuh on the Pi over Tailscale (The first bot sessions showed up on the Pi within seconds). Wazuh is only reachable over Tailscale, and the VM can only talk to its two agent ports. The next goal is to set up index retention so the Pi's SD card doesn't fill up, then writing my first detection rules for the Cowrie events. 
 
 ## Progress
 
@@ -15,7 +14,7 @@ Tailscale; next is the agent on the VM to ship Cowrie logs.
 - [x] Azure network/VM, admin access over Tailscale only
 - [x] Cowrie deployed, exposed on 22/23, verified with external scans
 - [X] Wazuh SIEM installed on the Pi
-- [ ] Ship logs to the Pi over Tailscale (tailnet is segmented)
+- [X] Ship logs to the Pi over Tailscale (tailnet is segmented)
 - [ ] Custom Cowrie decoders
 - [ ] IP enrichment (AbuseIPDB / VirusTotal)
 - [ ] Map detection rules to frameworks (like MITRE ATT&CK)
