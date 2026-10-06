@@ -6,7 +6,7 @@ SIEM on a Raspberry Pi, and write threat reports on what attackers have done.
 
 ## Current Status
 
-Cowrie logs now ship from the VM to Wazuh on the Pi over Tailscale (The first bot sessions showed up on the Pi within seconds). Wazuh is only reachable over Tailscale, and the VM can only talk to its two agent ports. The next goal is to set up index retention so the Pi's SD card doesn't fill up, then writing my first detection rules for the Cowrie events. 
+Cowrie logs now ship from the VM to Wazuh on the Pi over Tailscale (the first bot sessions showed up on the Pi within seconds). Wazuh is only reachable over Tailscale, and the VM can only talk to its two agent ports. The next goal is to set up index retention so the Pi's SD card doesn't fill up, then writing my first detection rules for the Cowrie events. 
 
 ## Progress
 

@@ -1,6 +1,6 @@
 # Pi Host Firewall (ufw)
 
-The Wazuh installer binds the agent ports (1514/1515), the API (55000) and the dashboard (443) to every interface, so they were reachable from anything on my home Wi-Fi. Instead of re-binding each service to the Tailscale IP, I used one firewall rule based on the interface, where the only traffic coming in over Tailscale is allowed.
+The Wazuh installer binds the agent ports (1514/1515), the API (55000) and the dashboard (443) to every interface, so they were reachable from anything on my home Wi-Fi. Instead of re-binding each service to the Tailscale IP, I used one firewall rule based on the interface, so only traffic coming in over Tailscale is allowed.
 
 ## Rules
 

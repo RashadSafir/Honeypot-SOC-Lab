@@ -41,7 +41,7 @@ honeypot.)
 
 'Deny-SMTP-Out' blocks outbound TCP 25, so even if something on the VM did end up getting compromised,
 it couldn't be used to send spam, which Microsoft's AUP prohibits. Other outbound internet traffic
-stays allowed since the VM needs it for updates/Tailscale/Wazuh (once that is implemented).
+stays allowed since the VM needs it for updates/Tailscale/Wazuh.
 
 ## Tailscale Segmentation
 | File | Purpose |
@@ -52,7 +52,7 @@ stays allowed since the VM needs it for updates/Tailscale/Wazuh (once that is im
 
 | File | Purpose | 
 |---|---|
-| `wazuh-pi-ports.txt` | Wazuh's listening ports after the all-in-one install, plus the host firewall. The agent ports (1514/1515), API (55000) and dashboard (443) listen on all interfaces; The indexer (9200) is localhost-only. `ufw` denies all inbound traffic except on `tailscale0`, plus SSH from the home LAN as a fallback, so none of the Wazuh ports are reachable from the LAN. |
+| `wazuh-pi-ports.txt` | Wazuh's listening ports after the all-in-one install, plus the host firewall. The agent ports (1514/1515), API (55000) and dashboard (443) listen on all interfaces; the indexer (9200) is localhost-only. `ufw` denies all inbound traffic except on `tailscale0`, plus SSH from the home LAN as a fallback, so none of the Wazuh ports are reachable from the LAN. |
 | `wazuh-port-tests.txt` | From the VM over Tailscale, after the install: Pi port 1514 now succeeds (since Wazuh is listening), while the Pi SSH still times out (blocked by tailnet policy). Compare with `tailscale-acl-tests.txt`, where 1514 was refused. | 
 | `wazuh-agent-vm.txt` | On the VM: The Wazuh agent running and reading Cowrie's `cowrie.json`, with memory headroom on the 1 GiB VM (agent + Cowrie + swap). |
-| `wazuh-cowrie-events.txt` | On the Pi: `vm-honeypot` registered and Active, and real Cowrie session events arriving at the manager, alread split into fields by Wazuh's built-in JSON decoder. Only connect/closed events are included, so no attempted credentials. |
+| `wazuh-cowrie-events.txt` | On the Pi: `vm-honeypot` registered and Active, and real Cowrie session events arriving at the manager, already split into fields by Wazuh's built-in JSON decoder. Only connect/closed events are included, so no attempted credentials. |
