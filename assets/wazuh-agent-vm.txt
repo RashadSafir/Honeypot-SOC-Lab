@@ -1,0 +1,11 @@
+Tue Oct  6 00:29:12 UTC 2026
+$ sudo systemctl is-active wazuh-agent
+active
+
+$ sudo grep "Analyzing file" /var/ossec/logs/ossec.log | grep cowrie | tail -n 1
+2026/10/06 00:20:59 wazuh-logcollector: INFO: (1950): Analyzing file: '/home/cowrie/my-honeypot/var/log/cowrie/cowrie.json'.
+
+$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           836Mi       360Mi        61Mi       3.9Mi       440Mi       476Mi
+Swap:          1.0Gi        60Mi       963Mi
